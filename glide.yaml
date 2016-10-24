@@ -1,0 +1,6 @@
+package: github.com/benspotatoes/extrawatch
+import:
+- package: goji.io
+  version: go17
+  subpackages:
+  - pat
