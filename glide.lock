@@ -1,0 +1,26 @@
+hash: 0f57a003f40f5cd7e402d3e3459e9b79591370d10b3f1419bfb1c245a63aa62e
+updated: 2016-10-24T01:15:32.836709005-07:00
+imports:
+- name: github.com/BurntSushi/toml
+  version: 99064174e013895bbd9b025c31100bd1d9b590ca
+- name: github.com/fatih/camelcase
+  version: f6a740d52f961c60348ebb109adde9f4635d7540
+- name: github.com/fatih/structs
+  version: dc3312cb1a4513a366c4c9e622ad55c32df12ed3
+- name: github.com/jmoiron/sqlx
+  version: 05b81a7d5d38058e42148dc01f17daf4acba4640
+  subpackages:
+  - reflectx
+- name: github.com/koding/multiconfig
+  version: 70fbc717657036daebaf5a62a1fa8c9fff917343
+- name: github.com/lib/pq
+  version: ae8357db35d721c58dcdc911318b55bef6b1b001
+  subpackages:
+  - oid
+- name: goji.io
+  version: 491574a68aafef9ffec867f25c78a87624e80c37
+  subpackages:
+  - internal
+  - pat
+  - pattern
+testImports: []
