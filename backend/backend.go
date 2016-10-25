@@ -2,9 +2,10 @@ package backend
 
 import (
 	"context"
+	"database/sql"
 
+	"github.com/Masterminds/squirrel"
 	"github.com/benspotatoes/extrawatch/models"
-	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 )
 
@@ -21,7 +22,8 @@ type Backend interface {
 }
 
 type backendImpl struct {
-	db *sqlx.DB
+	db   *sql.DB
+	psql squirrel.StatementBuilderType
 }
 
 const (
@@ -29,9 +31,9 @@ const (
 )
 
 func NewBackend(conf *Config) (Backend, error) {
-	db, err := sqlx.Connect(driver, conf.ConnectOpts)
+	db, err := sql.Open(driver, conf.ConnectOpts)
 	if err != nil {
 		return nil, err
 	}
-	return &backendImpl{db: db}, nil
+	return &backendImpl{db: db, psql: squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)}, nil
 }
