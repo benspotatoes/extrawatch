@@ -43,11 +43,12 @@ func init() {
 }
 
 type Match struct {
-	Map        string   `json:"map"`
-	Rounds     []*Round `json:"rounds"`
-	Win        int      `json:"win"`
-	RankDiff   int      `json:"rank_diff"`
-	EndingRank int      `json:"ending_rank"`
+	Map string `json:"map"`
+	// Rounds     []*Round `json:"rounds"`
+	Win        int  `json:"win"`
+	RankDiff   int  `json:"rank_diff"`
+	EndingRank int  `json:"ending_rank"`
+	Placement  bool `json:"placement"`
 }
 
 func (m *Match) Validate() error {
@@ -56,16 +57,16 @@ func (m *Match) Validate() error {
 		return errInvalidMap
 	}
 
-	// Rounds
-	if len(m.Rounds) < 2 {
-		return errInvalidMatchRounds
-	}
-	for _, round := range m.Rounds {
-		// Round
-		if roundErr := round.validate(); roundErr != nil {
-			return roundErr
-		}
-	}
+	// // Rounds
+	// if len(m.Rounds) < 2 {
+	// 	return errInvalidMatchRounds
+	// }
+	// for _, round := range m.Rounds {
+	// 	// Round
+	// 	if roundErr := round.validate(); roundErr != nil {
+	// 		return roundErr
+	// 	}
+	// }
 
 	// Win
 	if m.Win < -1 || m.Win > 1 {
@@ -83,10 +84,4 @@ func (m *Match) Validate() error {
 	}
 
 	return nil
-}
-
-type Map struct {
-	Name string `json:"name"`
-	// Type should be implicit
-	// Type string `json:"type"`
 }

@@ -4,6 +4,12 @@ import (
 	"context"
 )
 
+const ()
+
 func (b *backendImpl) DeleteMatch(ctx context.Context, matchID string) error {
-	return errNotImplemented
+	_, err := b.deleteMatchQuery(matchID).RunWith(b.db).Exec()
+	if err != nil {
+		return err
+	}
+	return nil
 }

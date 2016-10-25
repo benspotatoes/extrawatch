@@ -33,11 +33,11 @@ func init() {
 }
 
 type Round struct {
-	Count   int       `json:"count"`
-	Players []*Player `json:"players"`
-	Mode    string    `json:"mode"`
-	Result  *Result   `json:"result"`
-	Notes   string    `json:"notes"`
+	Count int `json:"count"`
+	// Players []*Player `json:"players"`
+	Mode   string  `json:"mode"`
+	Result *Result `json:"result"`
+	Notes  string  `json:"notes"`
 }
 
 func (r *Round) validate() error {
@@ -46,16 +46,16 @@ func (r *Round) validate() error {
 		return errInvalidRoundCount
 	}
 
-	// Players
-	if len(r.Players) != playerCount {
-		return errInvalidRoundPlayers
-	}
-	for _, player := range r.Players {
-		// Player
-		if playErr := player.Validate(); playErr != nil {
-			return playErr
-		}
-	}
+	// // Players
+	// if len(r.Players) != playerCount {
+	// 	return errInvalidRoundPlayers
+	// }
+	// for _, player := range r.Players {
+	// 	// Player
+	// 	if playErr := player.Validate(); playErr != nil {
+	// 		return playErr
+	// 	}
+	// }
 
 	// Mode
 	// TODO - Validate mode with map context

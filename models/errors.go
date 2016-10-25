@@ -11,6 +11,7 @@ var (
 	errInvalidEndingRank  = errors.New("invalid ending rank")
 	// Player
 	errInvalidPlayer = errors.New("invalid player")
+	errInvalidHeroes = errors.New("invalid hero count")
 	errInvalidHero   = errors.New("invalid hero")
 	// Round
 	errInvalidRoundCount   = errors.New("invalid round count")
