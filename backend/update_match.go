@@ -6,6 +6,7 @@ import (
 	"github.com/benspotatoes/extrawatch/models"
 )
 
-func (b *backendImpl) UpdateMatch(ctx context.Context, params *models.UpdateParams) error {
-	return errNotImplemented
+func (b *backendImpl) UpdateMatch(ctx context.Context, matchID string, params *models.Match) error {
+	_, err := b.updateMatchQuery(matchID, params).RunWith(b.db).Exec()
+	return err
 }

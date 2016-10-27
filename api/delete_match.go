@@ -11,8 +11,9 @@ func (rtr *Router) deleteMatch(w http.ResponseWriter, r *http.Request) {
 
 	err := rtr.Backend.DeleteMatch(r.Context(), matchID)
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
+		rtr.handleErrorResponse(w, r, http.StatusInternalServerError, err)
 		return
 	}
-	w.WriteHeader(http.StatusNoContent)
+
+	rtr.handleSuccessResponse(w, r, http.StatusNoContent, nil)
 }

@@ -8,8 +8,5 @@ const ()
 
 func (b *backendImpl) DeleteMatch(ctx context.Context, matchID string) error {
 	_, err := b.deleteMatchQuery(matchID).RunWith(b.db).Exec()
-	if err != nil {
-		return err
-	}
-	return nil
+	return err
 }

@@ -1,6 +1,7 @@
 package api
 
 import (
+	"database/sql"
 	"encoding/json"
 	"net/http"
 
@@ -10,18 +11,20 @@ import (
 func (rtr *Router) getMatch(w http.ResponseWriter, r *http.Request) {
 	matchID := pat.Param(r, "match_id")
 
-	res, err := rtr.Backend.GetMatch(r.Context(), matchID)
-	if err != nil {
-		w.WriteHeader(http.StatusNotImplemented)
+	match, err := rtr.Backend.SelectMatch(r.Context(), matchID)
+	if err == sql.ErrNoRows {
+		rtr.handleErrorResponse(w, r, http.StatusNotFound, nil)
+		return
+	} else if err != nil {
+		rtr.handleErrorResponse(w, r, http.StatusInternalServerError, err)
 		return
 	}
 
-	blob, err := json.Marshal(res)
+	blob, err := json.Marshal(match)
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
+		rtr.handleErrorResponse(w, r, http.StatusInternalServerError, err)
 		return
 	}
 
-	w.WriteHeader(http.StatusOK)
-	w.Write(blob)
+	rtr.handleSuccessResponse(w, r, http.StatusOK, blob)
 }

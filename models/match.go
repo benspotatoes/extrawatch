@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 var (
 	validMaps map[string]bool
 	maps      = []string{
@@ -43,12 +45,14 @@ func init() {
 }
 
 type Match struct {
-	Map string `json:"map"`
+	ID  string `json:"id"`
+	Map string `json:"map,omitempty"`
 	// Rounds     []*Round `json:"rounds"`
-	Win        int  `json:"win"`
-	RankDiff   int  `json:"rank_diff"`
-	EndingRank int  `json:"ending_rank"`
-	Placement  bool `json:"placement"`
+	Win        int        `json:"win,omitempty"`
+	RankDiff   int        `json:"rank_diff,omitempty"`
+	EndingRank int        `json:"ending_rank,omitempty"`
+	Placement  bool       `json:"placement,omitempty"`
+	PlayedOn   *time.Time `json:"played_on,omitempty"`
 }
 
 func (m *Match) Validate() error {
@@ -84,4 +88,17 @@ func (m *Match) Validate() error {
 	}
 
 	return nil
+}
+
+func MapToEnum(name string) int {
+	for i, m := range maps {
+		if m == name {
+			return i
+		}
+	}
+	return -1
+}
+
+func EnumToMap(enum int) string {
+	return maps[enum]
 }

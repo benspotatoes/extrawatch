@@ -14,10 +14,10 @@ type Config struct {
 }
 
 type Backend interface {
-	IndexMatch(ctx context.Context, params *models.IndexParams) ([]*models.Match, error)
-	GetMatch(ctx context.Context, matchID string) (*models.Match, error)
-	InsertMatch(ctx context.Context, params *models.InsertParams) error
-	UpdateMatch(ctx context.Context, params *models.UpdateParams) error
+	IndexMatch(ctx context.Context, limit, offset int, filter string) ([]*models.Match, error)
+	SelectMatch(ctx context.Context, matchID string) (*models.Match, error)
+	InsertMatch(ctx context.Context, params *models.Match) (string, error)
+	UpdateMatch(ctx context.Context, matchID string, params *models.Match) error
 	DeleteMatch(ctx context.Context, matchID string) error
 }
 
