@@ -10,7 +10,10 @@ func (rtr *Router) handleSuccessResponse(w http.ResponseWriter, r *http.Request,
 	log.Printf("[%s %s] returning %d", r.Method, r.RequestURI, status)
 	w.WriteHeader(status)
 	if body != nil {
-		w.Write(body.([]byte))
+		_, err := w.Write(body.([]byte))
+		if err != nil {
+			log.Printf("failed to write body %q", err.Error())
+		}
 	}
 }
 

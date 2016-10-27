@@ -2,6 +2,7 @@ package backend
 
 import (
 	"context"
+	"log"
 
 	"github.com/benspotatoes/extrawatch/models"
 )
@@ -12,7 +13,12 @@ func (b *backendImpl) IndexMatch(ctx context.Context, limit, offset int, filter 
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
+	defer func() {
+		err := rows.Close()
+		if err != nil {
+			log.Printf("failed to close sql connection %q", err.Error())
+		}
+	}()
 
 	for rows.Next() {
 		var rawID string
