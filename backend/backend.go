@@ -19,6 +19,11 @@ type Backend interface {
 	InsertMatch(ctx context.Context, params *models.Match) (string, error)
 	UpdateMatch(ctx context.Context, matchID string, params *models.Match) error
 	DeleteMatch(ctx context.Context, matchID string) error
+
+	SelectRound(ctx context.Context, roundID string) (*models.Round, error)
+	InsertRound(ctx context.Context, params *models.Round) (string, error)
+	UpdateRound(ctx context.Context, roundID string, params *models.Round) error
+	DeleteRound(ctx context.Context, roundID string) error
 }
 
 type backendImpl struct {
