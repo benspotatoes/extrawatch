@@ -7,6 +7,6 @@ import (
 )
 
 func (b *backendImpl) UpdateMatch(ctx context.Context, matchID string, params *models.Match) error {
-	_, err := b.updateMatchQuery(matchID, params).RunWith(b.db).Exec()
+	_, err := b.updateMatchQuery(b.parseID(matchID), params).RunWith(b.db).Exec()
 	return err
 }

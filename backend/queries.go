@@ -13,8 +13,8 @@ const (
 	roundIDPrefix = "round"
 )
 
-func (b *backendImpl) newID(prefix string) string {
-	return fmt.Sprintf("%s%s%s", prefix, idDelim, uuid.NewV4().String())
+func (b *backendImpl) newID() string {
+	return uuid.NewV4().String()
 }
 
 func (b *backendImpl) buildID(prefix, id string) string {

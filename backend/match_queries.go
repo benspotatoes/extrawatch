@@ -33,7 +33,7 @@ const (
 func (b *backendImpl) selectMatchQuery(matchID string, limit, offset int, filter string) squirrel.SelectBuilder {
 	base := b.psql.Select(matchCols...).From(matchTable)
 	if matchID != "" {
-		base = base.Where("id = ?", b.buildID(matchIDPrefix, matchID))
+		base = base.Where("id = ?", matchID)
 	}
 	if limit != 0 {
 		base = base.Limit(uint64(limit))
@@ -48,8 +48,8 @@ func (b *backendImpl) selectMatchQuery(matchID string, limit, offset int, filter
 }
 
 func (b *backendImpl) insertMatchQuery(params *models.Match) (string, squirrel.InsertBuilder) {
-	id := b.newID(matchIDPrefix)
-	return b.parseID(id), b.psql.Insert(matchTable).
+	id := b.newID()
+	return b.buildID(matchIDPrefix, id), b.psql.Insert(matchTable).
 		Columns(matchCols...).
 		Values(id, models.MapToEnum(params.Map), params.Win, params.RankDiff, params.EndingRank, params.Placement, time.Now())
 }
@@ -63,9 +63,9 @@ func (b *backendImpl) updateMatchQuery(matchID string, params *models.Match) squ
 		Set(matchEndingRankCol, params.EndingRank).
 		Set(matchPlacementCol, params.Placement).
 		// Set(matchPlayedOnCol, params.PlayedOn).
-		Where("id = ?", b.buildID(matchIDPrefix, matchID))
+		Where("id = ?", matchID)
 }
 
 func (b *backendImpl) deleteMatchQuery(matchID string) squirrel.DeleteBuilder {
-	return b.psql.Delete(matchTable).Where("id = ?", b.newID(matchID))
+	return b.psql.Delete(matchTable).Where("id = ?", matchID)
 }

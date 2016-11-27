@@ -8,6 +8,7 @@ import (
 var (
 	roundCols = []string{
 		roundIDCol,
+		roundMatchIDCol,
 		roundCountCol,
 		roundModeCol,
 		roundTimeLeftCol,
@@ -20,6 +21,7 @@ var (
 const (
 	roundTable          = "rounds"
 	roundIDCol          = "id"
+	roundMatchIDCol     = "match_id"
 	roundCountCol       = "count"
 	roundModeCol        = "mode"
 	roundTimeLeftCol    = "time_left"
@@ -31,7 +33,7 @@ const (
 func (b *backendImpl) selectRoundQuery(roundID string, limit, offset int, filter string) squirrel.SelectBuilder {
 	base := b.psql.Select(roundCols...).From(roundTable)
 	if roundID != "" {
-		base = base.Where("id = ?", b.buildID(roundIDPrefix, roundID))
+		base = base.Where("id = ?", roundID)
 	}
 	if limit != 0 {
 		base = base.Limit(uint64(limit))
@@ -46,10 +48,11 @@ func (b *backendImpl) selectRoundQuery(roundID string, limit, offset int, filter
 }
 
 func (b *backendImpl) insertRoundQuery(params *models.Round) (string, squirrel.InsertBuilder) {
-	id := b.newID(roundIDPrefix)
-	return b.parseID(id), b.psql.Insert(roundTable).
+	id := b.newID()
+	mID := b.parseID(params.MatchID)
+	return b.buildID(roundIDPrefix, id), b.psql.Insert(roundTable).
 		Columns(roundCols...).
-		Values(id, params.Count, models.ModeToEnum(params.Mode), params.Result.TimeLeft, params.Result.PercentDiff, params.Result.PointsTaken, params.Notes)
+		Values(id, mID, params.Count, models.ModeToEnum(params.Mode), params.Result.TimeLeft, params.Result.PercentDiff, params.Result.PointsTaken, params.Notes)
 }
 
 // TODO - Should we check for blank values before updating a row?
@@ -62,9 +65,9 @@ func (b *backendImpl) updateRoundQuery(roundID string, params *models.Round) squ
 		Set(roundPointsTakenCol, params.Result.PointsTaken).
 		Set(roundNotesCol, params.Notes).
 		// Set(roundPlayedOnCol, params.PlayedOn).
-		Where("id = ?", b.buildID(roundIDPrefix, roundID))
+		Where("id = ?", roundID)
 }
 
 func (b *backendImpl) deleteRoundQuery(roundID string) squirrel.DeleteBuilder {
-	return b.psql.Delete(roundTable).Where("id = ?", b.newID(roundID))
+	return b.psql.Delete(roundTable).Where("id = ?", roundID)
 }
