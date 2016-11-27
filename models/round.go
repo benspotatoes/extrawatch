@@ -33,12 +33,13 @@ func init() {
 }
 
 type Round struct {
-	ID    string `json:"id"`
-	Count int    `json:"count"`
+	ID      string `json:"id"`
+	MatchID string `json:"match_id,omitempty"`
+	Count   int    `json:"count,omitempty"`
 	// Players []*Player `json:"players"`
-	Mode   string  `json:"mode"`
-	Result *Result `json:"result"`
-	Notes  string  `json:"notes"`
+	Mode   string  `json:"mode,omitempty"`
+	Result *Result `json:"result,omitempty"`
+	Notes  string  `json:"notes,omitempty"`
 }
 
 func (r *Round) Validate() error {
