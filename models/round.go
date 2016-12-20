@@ -43,6 +43,11 @@ type Round struct {
 }
 
 func (r *Round) Validate() error {
+	// Match ID
+	if r.MatchID == "" {
+		return errInvalidMatchID
+	}
+
 	// Count
 	if r.Count < 0 {
 		return errInvalidRoundCount
