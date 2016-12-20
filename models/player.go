@@ -78,7 +78,7 @@ func (p *PlayerRound) Validate() error {
 	}
 
 	// Heroes
-	if len(p.Heroes) > 3 {
+	if len(p.Heroes) < 1 || len(p.Heroes) > 3 {
 		return errInvalidHeroes
 	}
 	for _, hero := range p.Heroes {
