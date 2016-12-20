@@ -1,7 +1,9 @@
 {
   "name": "tanookiben",
-  "match_id": "match:d67590b59961b007262d2198755aa8b5",
-  "primary_hero": "roadhog",
-  "secondary_hero": "reinhardt",
-  "tertiary_hero": "mccree"
+  "round_id": "round:0a30f439-938f-4769-9213-b41d04f8f7ff",
+  "heroes": [
+    "ana",
+    "roadhog",
+    "mccree"
+  ]
 }
