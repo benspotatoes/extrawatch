@@ -32,7 +32,7 @@ type Backend interface {
 
 	SelectPlayerRound(ctx context.Context, playerID, roundID string) (*models.PlayerRound, error)
 	InsertPlayerRound(ctx context.Context, params *models.PlayerRound) error
-	UpdatePlayerRound(ctx context.Context, params *models.PlayerRound) error
+	UpdatePlayerRound(ctx context.Context, playerID, roundID string, params *models.PlayerRound) error
 	DeletePlayerRound(ctx context.Context, playerID, roundID string) error
 }
 
