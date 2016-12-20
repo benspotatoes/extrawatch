@@ -11,7 +11,7 @@ func (rtr *Router) postMatch(w http.ResponseWriter, r *http.Request) {
 	params := &models.Match{}
 	err := json.NewDecoder(r.Body).Decode(&params)
 	if err != nil {
-		rtr.handleErrorResponse(w, r, http.StatusNotImplemented, err)
+		rtr.handleErrorResponse(w, r, http.StatusInternalServerError, err)
 		return
 	}
 
