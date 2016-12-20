@@ -9,10 +9,10 @@ import (
 	"goji.io/pat"
 )
 
-func (rtr *Router) updateMatch(w http.ResponseWriter, r *http.Request) {
-	matchID := pat.Param(r, "match_id")
+func (rtr *Router) updatePlayer(w http.ResponseWriter, r *http.Request) {
+	playerID := pat.Param(r, "player_id")
 
-	params := &models.Match{}
+	params := &models.Player{}
 	err := json.NewDecoder(r.Body).Decode(&params)
 	if err != nil {
 		rtr.handleErrorResponse(w, r, http.StatusInternalServerError, err)
@@ -25,14 +25,14 @@ func (rtr *Router) updateMatch(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = rtr.Backend.UpdateMatch(r.Context(), matchID, params)
+	err = rtr.Backend.UpdatePlayer(r.Context(), playerID, params)
 	if err != nil {
 		rtr.handleErrorResponse(w, r, http.StatusInternalServerError, err)
 		return
 	}
 
-	match := &models.Match{ID: matchID}
-	blob, err := json.Marshal(match)
+	player := &models.Player{ID: playerID}
+	blob, err := json.Marshal(player)
 	if err != nil {
 		rtr.handleErrorResponse(w, r, http.StatusInternalServerError, err)
 		return
