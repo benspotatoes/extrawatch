@@ -30,7 +30,7 @@ func NewRouter(b backend.Backend) *goji.Mux {
 	mux.HandleFunc(pat.Put("/round/:round_id"), router.updateRound)
 	mux.HandleFunc(pat.Delete("/round/:round_id"), router.deleteRound)
 	mux.HandleFunc(pat.Post("/round"), router.postRound)
-	// mux.HandleFunc(pat.Delete("/round"), router.deleteRound)
+	mux.HandleFunc(pat.Delete("/round"), router.deleteRound)
 
 	return mux
 }
