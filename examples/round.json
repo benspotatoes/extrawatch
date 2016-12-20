@@ -1,6 +1,11 @@
 {
+  "match_id": "match:3a3f2260-c711-418a-8359-402ccadee7f4",
   "count": 1,
   "mode": "attack",
-  "notes": "team coordination",
-  "match_id": "match:3c4ae622f3636af448be3ec281c48a17"
+  "result": {
+    "time_left": 0,
+    "percent_diff": 0,
+    "points_taken": 2,
+  },
+  "notes": "team coordination"
 }

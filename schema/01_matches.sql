@@ -9,4 +9,6 @@ CREATE TABLE matches (
 );
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON matches TO app;
+CREATE INDEX index_matches_map ON matches USING btree (map);
+CREATE INDEX index_matches_win ON matches USING btree (win);
 CREATE INDEX index_matches_played_on ON matches USING btree (played_on);

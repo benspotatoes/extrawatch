@@ -33,14 +33,16 @@ func init() {
 }
 
 type Round struct {
-	Count int `json:"count"`
+	ID      string `json:"id"`
+	MatchID string `json:"match_id,omitempty"`
+	Count   int    `json:"count,omitempty"`
 	// Players []*Player `json:"players"`
-	Mode   string  `json:"mode"`
-	Result *Result `json:"result"`
-	Notes  string  `json:"notes"`
+	Mode   string  `json:"mode,omitempty"`
+	Result *Result `json:"result,omitempty"`
+	Notes  string  `json:"notes,omitempty"`
 }
 
-func (r *Round) validate() error {
+func (r *Round) Validate() error {
 	// Count
 	if r.Count < 0 {
 		return errInvalidRoundCount
@@ -64,7 +66,7 @@ func (r *Round) validate() error {
 	}
 
 	// Result
-	if resErr := r.Result.validate(); resErr != nil {
+	if resErr := r.Result.Validate(); resErr != nil {
 		return resErr
 	}
 
@@ -82,19 +84,35 @@ type Result struct {
 	PointsTaken int `json:"points_taken"`
 }
 
-func (m *Result) validate() error {
+func (m *Result) Validate() error {
 	switch {
 	case m.TimeLeft != 0 && m.PercentDiff == 0 && m.PointsTaken == 0:
+		// Payload/Hybrid
 		// Time remaining means the payload was pushed to the last point
 		return nil
 	case m.PercentDiff != 0 && m.TimeLeft == 0 && m.PointsTaken == 0:
+		// King of the hill
 		// Positive percent diff means a win, negative means a loss
 		return nil
 	case m.PointsTaken >= 0 && m.TimeLeft == 0 && m.PercentDiff == 0:
+		// Assault/Defend
 		// No points taken with no time left means either the attack was a super
 		// disaster or the defense was a great success
 		return nil
 	default:
 		return errInvalidRoundResult
 	}
+}
+
+func ModeToEnum(name string) int {
+	for i, m := range modes {
+		if m == name {
+			return i
+		}
+	}
+	return -1
+}
+
+func EnumToMode(enum int) string {
+	return modes[enum]
 }
