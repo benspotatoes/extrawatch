@@ -18,6 +18,7 @@ var (
 		"reinhardt",
 		"roadhog",
 		"soldier76",
+		"sombra",
 		"symmetra",
 		"torbjorn",
 		"tracer",
