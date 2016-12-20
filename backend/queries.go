@@ -8,9 +8,10 @@ import (
 )
 
 const (
-	idDelim       = ":"
-	matchIDPrefix = "match"
-	roundIDPrefix = "round"
+	idDelim        = ":"
+	matchIDPrefix  = "match"
+	roundIDPrefix  = "round"
+	playerIDPrefix = "player"
 )
 
 func (b *backendImpl) newID() string {
