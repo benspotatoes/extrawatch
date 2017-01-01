@@ -13,7 +13,7 @@ func (b *backendImpl) SelectRound(ctx context.Context, roundID string) (*models.
 	round := &models.Round{}
 	result := &models.Result{}
 	rows := b.selectRoundQuery(b.parseID(roundID), 0, 0, "").RunWith(b.db).QueryRow()
-	err := rows.Scan(&rawID, &matchID, &round.Count, &modeEnum, &result.TimeLeft, &result.PercentDiff, &result.PointsTaken, &round.Notes)
+	err := rows.Scan(&rawID, &matchID, &round.Count, &modeEnum, &result.TimeLeft, &result.PercentDiff, &result.PointsTaken, &result.Win, &round.Notes)
 	if err != nil {
 		return nil, err
 	}

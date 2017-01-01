@@ -6,6 +6,7 @@ CREATE TABLE rounds (
   time_left integer,
   percent_diff integer,
   points_taken integer,
+  win integer NOT NULL DEFAULT 0,
   notes text
 );
 

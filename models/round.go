@@ -5,7 +5,7 @@ var (
 	modes      = []string{
 		// Escort, Assault, Hybrid
 		"attack",
-		"defense",
+		"defend",
 		// LijiangTower
 		"market",
 		"gardens",
@@ -84,22 +84,27 @@ func (r *Round) Validate() error {
 }
 
 type Result struct {
+	Win         int `json:"win"`
 	TimeLeft    int `json:"time_left"`
 	PercentDiff int `json:"percent_diff"`
 	PointsTaken int `json:"points_taken"`
 }
 
-func (m *Result) Validate() error {
+func (r *Result) Validate() error {
+	if r.Win < -1 || r.Win > 1 {
+		return errInvalidRoundResult
+	}
+
 	switch {
-	case m.TimeLeft != 0 && m.PercentDiff == 0 && m.PointsTaken == 0:
+	case r.TimeLeft != 0 && r.PercentDiff == 0 && r.PointsTaken == 0:
 		// Payload/Hybrid
 		// Time remaining means the payload was pushed to the last point
 		return nil
-	case m.PercentDiff != 0 && m.TimeLeft == 0 && m.PointsTaken == 0:
+	case r.PercentDiff != 0 && r.TimeLeft == 0 && r.PointsTaken == 0:
 		// King of the hill
 		// Positive percent diff means a win, negative means a loss
 		return nil
-	case m.PointsTaken >= 0 && m.TimeLeft == 0 && m.PercentDiff == 0:
+	case r.PointsTaken >= 0 && r.TimeLeft == 0 && r.PercentDiff == 0:
 		// Assault/Defend
 		// No points taken with no time left means either the attack was a super
 		// disaster or the defense was a great success
