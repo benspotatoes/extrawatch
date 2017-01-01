@@ -14,6 +14,7 @@ var (
 		roundTimeLeftCol,
 		roundPercentDiffCol,
 		roundPointsTakenCol,
+		roundWinCol,
 		roundNotesCol,
 	}
 )
@@ -27,6 +28,7 @@ const (
 	roundTimeLeftCol    = "time_left"
 	roundPercentDiffCol = "percent_diff"
 	roundPointsTakenCol = "points_taken"
+	roundWinCol         = "win"
 	roundNotesCol       = "notes"
 )
 
@@ -52,7 +54,7 @@ func (b *backendImpl) insertRoundQuery(params *models.Round) (string, squirrel.I
 	mID := b.parseID(params.MatchID)
 	return b.buildID(roundIDPrefix, id), b.psql.Insert(roundTable).
 		Columns(roundCols...).
-		Values(id, mID, params.Count, models.ModeToEnum(params.Mode), params.Result.TimeLeft, params.Result.PercentDiff, params.Result.PointsTaken, params.Notes)
+		Values(id, mID, params.Count, models.ModeToEnum(params.Mode), params.Result.TimeLeft, params.Result.PercentDiff, params.Result.PointsTaken, params.Result.Win, params.Notes)
 }
 
 // TODO - Should we check for blank values before updating a row?
@@ -63,6 +65,7 @@ func (b *backendImpl) updateRoundQuery(roundID string, params *models.Round) squ
 		Set(roundTimeLeftCol, params.Result.TimeLeft).
 		Set(roundPercentDiffCol, params.Result.PercentDiff).
 		Set(roundPointsTakenCol, params.Result.PointsTaken).
+		Set(roundWinCol, params.Result.Win).
 		Set(roundNotesCol, params.Notes).
 		// Set(roundPlayedOnCol, params.PlayedOn).
 		Where("id = ?", roundID)

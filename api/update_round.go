@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"goji.io/pat"
-
 	"github.com/benspotatoes/extrawatch/models"
+
+	"goji.io/pat"
 )
 
 func (rtr *Router) updateRound(w http.ResponseWriter, r *http.Request) {

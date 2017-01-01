@@ -1,6 +1,14 @@
 package: github.com/benspotatoes/extrawatch
 import:
+- package: github.com/Masterminds/squirrel
+  version: 20f192218cf52a73397fa2df45bdda720f3e47c8
+- package: github.com/koding/multiconfig
+  version: d41df0950d47742f85c1857b5744c154730df9dc
+- package: github.com/lib/pq
+  version: 5bf161122cd640c2a5a2c1d7fa49ea9befff31dd
+- package: github.com/satori/go.uuid
+  version: b061729afc07e77a8aa4fad0a2fd840958f1942a
 - package: goji.io
-  version: go17
+  version: 0d89ff54b2c18c9c4ba530e32496aef902d3c6cd
   subpackages:
   - pat

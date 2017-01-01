@@ -18,6 +18,7 @@ var (
 		"reinhardt",
 		"roadhog",
 		"soldier76",
+		"sombra",
 		"symmetra",
 		"torbjorn",
 		"tracer",
@@ -40,13 +41,19 @@ func init() {
 }
 
 type Player struct {
-	Name string `json:"name"`
+	ID   string `json:"id"`
+	Name string `json:"name,omitempty"`
+}
+
+type PlayerRound struct {
+	PlayerID string `json:"player_id,omitempty"`
+	RoundID  string `json:"round_id,omitempty"`
 	// TODO - Should we enum this bad boy?
 	// I want to make this a write-in field so we don't have to worry about a
 	// dropdown selector (to handle enums) somehow conveying multiple-hero
 	// seletions
 	// TODO - Should we limit this to one selection?
-	Heroes []string `json:"heroes"`
+	Heroes []string `json:"heroes,omitempty"`
 }
 
 func (p *Player) Validate() error {
@@ -56,8 +63,22 @@ func (p *Player) Validate() error {
 		p.Name = rando
 	}
 
+	return nil
+}
+
+func (p *PlayerRound) Validate() error {
+	// Round ID
+	if p.RoundID == "" {
+		return errInvalidRoundID
+	}
+
+	// Player ID
+	if p.PlayerID == "" {
+		return errInvalidPlayerID
+	}
+
 	// Heroes
-	if len(p.Heroes) > 3 {
+	if len(p.Heroes) < 1 || len(p.Heroes) > 3 {
 		return errInvalidHeroes
 	}
 	for _, hero := range p.Heroes {
@@ -68,4 +89,17 @@ func (p *Player) Validate() error {
 	}
 
 	return nil
+}
+
+func HeroToEnum(name string) int {
+	for i, m := range heroes {
+		if m == name {
+			return i
+		}
+	}
+	return -1
+}
+
+func EnumToHero(enum int) string {
+	return heroes[enum]
 }

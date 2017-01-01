@@ -5,7 +5,19 @@
   "result": {
     "time_left": 0,
     "percent_diff": 0,
-    "points_taken": 2,
+    "points_taken": 2
   },
   "notes": "team coordination"
+}
+
+{
+  "match_id": "match:3a3f2260-c711-418a-8359-402ccadee7f4",
+  "count": 2,
+  "mode": "defend",
+  "result": {
+    "time_left": 0,
+    "percent_diff": 0,
+    "points_taken": 1
+  },
+  "notes": ""
 }

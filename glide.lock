@@ -1,28 +1,28 @@
-hash: 0f57a003f40f5cd7e402d3e3459e9b79591370d10b3f1419bfb1c245a63aa62e
-updated: 2016-10-26T19:47:01.575302895-07:00
+hash: a437a1da9993ef3f720184df343d991794d367cee0a2c4bb6d7e9dcdbca5c6f0
+updated: 2016-12-20T23:24:35.153945243-08:00
 imports:
 - name: github.com/BurntSushi/toml
-  version: f0aeabca5a127c4078abb8c8d64298b147264b55
+  version: 99064174e013895bbd9b025c31100bd1d9b590ca
 - name: github.com/fatih/camelcase
   version: f6a740d52f961c60348ebb109adde9f4635d7540
 - name: github.com/fatih/structs
-  version: c7685df069270748b8101edee16c4e1e6589712c
+  version: dc3312cb1a4513a366c4c9e622ad55c32df12ed3
 - name: github.com/koding/multiconfig
-  version: adb14a9648f101b3a5ac2b370a7d37c4a4a08b39
+  version: d41df0950d47742f85c1857b5744c154730df9dc
 - name: github.com/lann/builder
   version: f22ce00fd9394014049dad11c244859432bd6820
 - name: github.com/lann/ps
   version: 62de8c46ede02a7675c4c79c84883eb164cb71e3
 - name: github.com/lib/pq
-  version: 3cd0097429be7d611bb644ef85b42bfb102ceea4
+  version: 5bf161122cd640c2a5a2c1d7fa49ea9befff31dd
   subpackages:
   - oid
 - name: github.com/Masterminds/squirrel
-  version: cb03830e33a9c086b3f9051548a81d299e190939
+  version: 20f192218cf52a73397fa2df45bdda720f3e47c8
 - name: github.com/satori/go.uuid
-  version: d41af8bb6a7704f00bc3b7cba9355ae6a5a80048
+  version: b061729afc07e77a8aa4fad0a2fd840958f1942a
 - name: goji.io
-  version: 491574a68aafef9ffec867f25c78a87624e80c37
+  version: 0d89ff54b2c18c9c4ba530e32496aef902d3c6cd
   subpackages:
   - internal
   - pat

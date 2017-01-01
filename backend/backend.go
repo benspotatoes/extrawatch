@@ -24,6 +24,16 @@ type Backend interface {
 	InsertRound(ctx context.Context, params *models.Round) (string, error)
 	UpdateRound(ctx context.Context, roundID string, params *models.Round) error
 	DeleteRound(ctx context.Context, roundID string) error
+
+	SelectPlayer(ctx context.Context, playerID string) (*models.Player, error)
+	InsertPlayer(ctx context.Context, params *models.Player) (string, error)
+	UpdatePlayer(ctx context.Context, playerID string, params *models.Player) error
+	DeletePlayer(ctx context.Context, playerID string) error
+
+	SelectPlayerRound(ctx context.Context, playerID, roundID string) (*models.PlayerRound, error)
+	InsertPlayerRound(ctx context.Context, params *models.PlayerRound) error
+	UpdatePlayerRound(ctx context.Context, playerID, roundID string, params *models.PlayerRound) error
+	DeletePlayerRound(ctx context.Context, playerID, roundID string) error
 }
 
 type backendImpl struct {
