@@ -20,7 +20,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("unable to initialize backend: %s\n", err.Error())
 	}
-	mux := api.NewRouter(backend)
+	mux := api.NewRouter(backend, &api.Config{Cors: conf.Cors})
 	serve(conf, mux)
 }
 

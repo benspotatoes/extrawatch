@@ -3,16 +3,21 @@ package api
 import (
 	"net/http"
 
+	"github.com/benspotatoes/extrawatch/api/middleware"
 	"github.com/benspotatoes/extrawatch/backend"
 	"goji.io"
 	"goji.io/pat"
 )
 
+type Config struct {
+	Cors bool
+}
+
 type Router struct {
 	Backend backend.Backend
 }
 
-func NewRouter(b backend.Backend) *goji.Mux {
+func NewRouter(b backend.Backend, c *Config) *goji.Mux {
 	router := &Router{
 		Backend: b,
 	}
@@ -40,6 +45,10 @@ func NewRouter(b backend.Backend) *goji.Mux {
 	mux.HandleFunc(pat.Get("/player/:player_id/round/:round_id"), router.getPlayerRound)
 	mux.HandleFunc(pat.Delete("/player/:player_id/round/:round_id"), router.deletePlayerRound)
 	mux.HandleFunc(pat.Post("/player/round"), router.postPlayerRound)
+
+	if c.Cors {
+		mux.Use(middleware.Cors)
+	}
 
 	return mux
 }
