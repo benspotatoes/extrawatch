@@ -8,7 +8,7 @@ var (
 		"defend",
 		// LijiangTower
 		"market",
-		"gardens",
+		"garden",
 		"center",
 		// Nepal
 		"village",
@@ -18,6 +18,10 @@ var (
 		"lighthouse",
 		"well",
 		"ruins",
+		// Oasis
+		"center",
+		"gardens",
+		"university",
 	}
 )
 
