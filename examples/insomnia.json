@@ -1,0 +1,248 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2017-01-11T03:33:54.036Z",
+	"__export_source": "insomnia.desktop.app:v4.0.13",
+	"resources": [
+		{
+			"_id": "wrk_454c1dcd08f741d19763671689fa7931",
+			"parentId": null,
+			"modified": 1484105623292,
+			"created": 1484103541500,
+			"name": "Extrawatch",
+			"description": "",
+			"certificates": [],
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_4a4aa58c4cb14d8a9d23ff9569ee5ab9",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484103658060,
+			"created": 1484103658060,
+			"name": "Base Environment",
+			"data": {},
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_75e4fdcf67524f8c817e5b5644e869e1",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105582036,
+			"created": 1484103658093,
+			"name": "Default Jar",
+			"cookies": [],
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_059f2a95ee5c49288f0eb00315182876",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105293936,
+			"created": 1484105277051,
+			"url": "{{host}}/round",
+			"name": "POST /round (4)",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"match_id\": \"match:dc775d3c-c7fe-47b3-b436-202725277eb5\",\n\t\"count\": 5,\n\t\"mode\": \"lighthouse\",\n\t\"result\": {\n\t\t\"win\": 1,\n\t\t\"percent_diff\": 1\n\t}\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1484104937095.25,
+			"_type": "request"
+		},
+		{
+			"_id": "req_1178eee2aeeb4201a47f5c98c3da8d9d",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105181289,
+			"created": 1484104754151,
+			"url": "{{host}}/round",
+			"name": "POST /round",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"match_id\": \"match:dc775d3c-c7fe-47b3-b436-202725277eb5\",\n\t\"count\": 5,\n\t\"mode\": \"lighthouse\",\n\t\"result\": {\n\t\t\"win\": 1,\n\t\t\"percent_diff\": 1\n\t}\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1484104754151,
+			"_type": "request"
+		},
+		{
+			"_id": "req_61cc5816969f4a1c84d0bf08f5d8ab7f",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105062512,
+			"created": 1484103647435,
+			"url": "{{host}}/player",
+			"name": "GET /player",
+			"method": "GET",
+			"body": {
+				"text": ""
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1484103647435,
+			"_type": "request"
+		},
+		{
+			"_id": "req_6fabc923b6c441eebde2473761897401",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105128445,
+			"created": 1484104586834,
+			"url": "{{host}}/match",
+			"name": "POST /match",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"map\": \"ilios\",\n\t\"win\": 1,\n\t\"rank_diff\": 0,\n\t\"ending_rank\": 3414,\n\t\"placement\": true\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1484104586834,
+			"_type": "request"
+		},
+		{
+			"_id": "req_b0ecdbbe7bac4afd910461e3bffa4246",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105580271,
+			"created": 1484104998078,
+			"url": "{{host}}/player/round",
+			"name": "POST /player/round",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"player_id\": \"player:b27bac7e-9104-498c-997b-52e413c35f07\",\n\t\"round_id\": \"round:d1a49f15-ab72-40de-aa2e-ee60ccf0b7c4\",\n\t\"heroes\": [\n\t\t\"roadhog\",\n\t\t\"dva\"\n\t]\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1484104998078,
+			"_type": "request"
+		},
+		{
+			"_id": "req_b26d267e76d649e3893ea0bd18a6e3bf",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105491181,
+			"created": 1484104896487,
+			"url": "{{host}}/player",
+			"name": "POST /player",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"biotin\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1484104117134.5,
+			"_type": "request"
+		},
+		{
+			"_id": "req_b777548770704de29b2f98fdd51fb94b",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105270193,
+			"created": 1484105262842,
+			"url": "{{host}}/round",
+			"name": "POST /round (1)",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"match_id\": \"match:dc775d3c-c7fe-47b3-b436-202725277eb5\",\n\t\"count\": 5,\n\t\"mode\": \"lighthouse\",\n\t\"result\": {\n\t\t\"win\": 1,\n\t\t\"percent_diff\": 1\n\t}\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1484104876114.5,
+			"_type": "request"
+		},
+		{
+			"_id": "req_d85a2f9f82734857bb1e7b51f229cc5b",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105286142,
+			"created": 1484105282165,
+			"url": "{{host}}/round",
+			"name": "POST /round (2)",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"match_id\": \"match:dc775d3c-c7fe-47b3-b436-202725277eb5\",\n\t\"count\": 5,\n\t\"mode\": \"lighthouse\",\n\t\"result\": {\n\t\t\"win\": 1,\n\t\t\"percent_diff\": 1\n\t}\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1484104937093.25,
+			"_type": "request"
+		},
+		{
+			"_id": "req_f9f7fc030ded4f3e8b9ee0ca112a9ca1",
+			"parentId": "wrk_454c1dcd08f741d19763671689fa7931",
+			"modified": 1484105290297,
+			"created": 1484105280575,
+			"url": "{{host}}/round",
+			"name": "POST /round (3)",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"match_id\": \"match:dc775d3c-c7fe-47b3-b436-202725277eb5\",\n\t\"count\": 5,\n\t\"mode\": \"lighthouse\",\n\t\"result\": {\n\t\t\"win\": 1,\n\t\t\"percent_diff\": 1\n\t}\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1484104937094.25,
+			"_type": "request"
+		},
+		{
+			"_id": "env_108b13654db0435ebffae3bf45334697",
+			"parentId": "env_4a4aa58c4cb14d8a9d23ff9569ee5ab9",
+			"modified": 1484105068635,
+			"created": 1484104594721,
+			"name": "Development",
+			"data": {
+				"host": "localhost:8000"
+			},
+			"_type": "environment"
+		}
+	]
+}
