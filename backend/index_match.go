@@ -29,7 +29,7 @@ func (b *backendImpl) IndexMatch(ctx context.Context, limit, offset int, filter 
 			return matches, err
 		}
 
-		match.ID = b.parseID(rawID)
+		match.ID = b.buildID(matchIDPrefix, rawID)
 		match.Map = models.EnumToMap(mapEnum)
 		matches = append(matches, match)
 	}

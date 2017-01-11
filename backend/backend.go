@@ -25,6 +25,7 @@ type Backend interface {
 	UpdateRound(ctx context.Context, roundID string, params *models.Round) error
 	DeleteRound(ctx context.Context, roundID string) error
 
+	IndexPlayer(ctx context.Context, filter string) ([]*models.Player, error)
 	SelectPlayer(ctx context.Context, playerID string) (*models.Player, error)
 	InsertPlayer(ctx context.Context, params *models.Player) (string, error)
 	UpdatePlayer(ctx context.Context, playerID string, params *models.Player) error
