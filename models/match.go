@@ -22,7 +22,7 @@ var (
 		"lijiang",
 		"nepal",
 		"ilios",
-		"oasis"
+		"oasis",
 	}
 	types = []string{
 		"Escort",
